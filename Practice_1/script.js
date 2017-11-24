@@ -1,14 +1,14 @@
-function qSort(mas, left, right) {
-	var op = mas[(left + right) / 2]; //выбор опорного элемента
+function quickSort(mas, left, right) {
+	var pivot = mas[(left + right) / 2]; //выбор опорного элемента
 	var tmp = 0;
 	var i = left; //указатель на левую границу
 	var j = right; //указатель на правую границу
 
-		while (mas[i] < op) { //
+		while (mas[i] < pivot) { //
 			i++;
 		}
 
-		while (mas[j] > op) {
+		while (mas[j] > pivot) {
 			j--;
 		}
 
@@ -23,10 +23,10 @@ function qSort(mas, left, right) {
 	 	}
 
 	if (left < j)  
-		qSort(mas, left, j); //рекурсивный вызов
+		quickSort(mas, left, j); //рекурсивный вызов
 
 	if (right > i) 
-		qSort(mas, i, right); //рекурсивный вызов
+		quickSort(mas, i, right); //рекурсивный вызов
 }
 
 var mas = [12, 7, -9, 0, 56, 104, 112];
@@ -34,7 +34,7 @@ console.log("Исходный массив:");
 console.log(mas);
 var left = 0;
 var right = mas.length - 1;
-qSort(mas, left, right);
+quickSort(mas, left, right);
 console.log("Отсортированный массив:")
 for (var i = 0; i < mas.length; i++) {
 	console.log(mas[i]);
